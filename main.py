@@ -2,6 +2,7 @@ import os
 import utils
 import time
 import _thread
+import ctypes
 
 from tkinter import *
 from tkinter import messagebox
@@ -88,7 +89,7 @@ utils.TkUtils.SetProcessDpiAwareness(True)
 
 root = Tk("유튜브 다운로더")
 root.title("유튜브 다운로더")
-root.geometry("300x100+200+200")
+root.geometry("300x100+200+200" if ctypes.windll.user32.GetDpiForWindow(root.winfo_id()) < 105 else "300x300+200+200")
 root.resizable(False, False)
 root.config(bg="white")
 root.overrideredirect(True)
